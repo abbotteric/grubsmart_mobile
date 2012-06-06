@@ -19,6 +19,7 @@
 	<script type="text/javascript" charset="utf-8" src="cordova-1.7.0.js"></script>
     <script type="text/javascript" charset="utf-8" src="jquery-1.7.2.js"></script>
     <script type="text/javascript" charset="utf-8" src="jquery.mobile-1.1.0.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/main.js"></script>
     <script type="text/javascript">
         
 
@@ -77,33 +78,14 @@
         }
         
         $(document).bind('pageinit', function() {
-                         $.get("http://24.7.2.229:8888/json.html",function(data){
-                               var obj = eval('('+data+')');
-                               $('#onecontent').append('<ul id="list" data-role="listview" data-inset="true" data-filter="true" data-theme="a"></ul>');
-                               //alert(obj.restaraunts.length);
-                               for(var i = 0; i < obj.restaraunts.length; i++)
-                               {
-                               var straunt = obj.restaraunts[i];
-                               var imgFile = '';
-                               if(straunt.dealClass == 'freeApp')
-                               {
-                               imgFile = 'images/fastfood.svg';
-                               }
-                               else
-                               {
-                               imgFile = 'images/dessert.svg';
-                               }
-                               $('#list').append('<li><a href="#"><img class="dealimg" src="'+imgFile+'"/>'+straunt.name+' - '+straunt.distance+'<p class="dealdesc">'+straunt.deal+'</p>Minimum Diners: '+straunt.minDiners+'</a></li>');
-                               }
-                               $('#list').listview();
-                               });
+							loadDealData(1,1,"list");
                          });
         
-        $(document).bind('click', function(event){
+        /*$(document).bind('click', function(event){
                          $('#list').append('<li><a href="#">Volvo</a></li>');
                          //var content = $("#onecontent");
                          $("#list").listview("refresh");
-                         });
+                         });*/
 
     </script>
   </head>
@@ -113,15 +95,15 @@
           <h1>Deals</h1>
       </div>
       <div id="onecontent" data-role="content" data-theme="a">
-          <!--<ul id="list" data-role="listview" data-inset="true" data-filter="true" data-theme="e">
-              <li><a href="#">Acura</a></li>
+          <ul id="list" data-role="listview" data-inset="true" data-filter="true" data-theme="e">
+              <!--<li><a href="#">Acura</a></li>
               <li><a href="#">Audi</a></li>
               <li><a href="#">BMW</a></li>
               <li><a href="#">Cadillac</a></li>
-              <li><a href="#">Ferrari</a></li>
+              <li><a href="#">Ferrari</a></li>-->
           </ul>
           <a id="totwo" data-role="button" data-shadow="true" data-transition="fade" data-icon="star" data-theme="a">Button</a>
-          <a id="add" data-role="button" data-rel="dialog" data-shadow="true" data-transition="fade" data-icon="star" data-theme="a">Button</a>-->
+          <a id="add" data-role="button" data-rel="dialog" data-shadow="true" data-transition="fade" data-icon="star" data-theme="a">Button</a>
       </div>
       <div data-role="footer" data-position="fixed" data-theme="a">
           <div class="sortbutton" data-role="controlgroup" data-type="horizontal">
