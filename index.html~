@@ -11,7 +11,7 @@
 	<link rel="stylesheet" media="only screen and (max-device-width: 1024px)" href="ipad.css" type="text/css" />		
 	<link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="iphone.css" type="text/css" />	
 	-->
-    <link rel="stylesheet" href="css/test1.css" />
+    <link rel="stylesheet" href="css/eric-theme.css" />
     <link rel="stylesheet" href="jquery.mobile.structure-1.1.0.css" />  
     <link rel="stylesheet" href="css/mystyle.css" />
     
@@ -72,7 +72,7 @@
             
             $('#add').bind('click', function(event){
                            navigator.notification.alert("Hello");
-                           $('#list').append('<li data-theme="a"><a href="#">Volvo</a></li>');
+                           $('#list').append('<li data-theme="e"><a href="#">Volvo</a></li>');
                            document.getElementById("onecontent").listview('refresh');
                            });
         }
@@ -90,12 +90,11 @@
     </script>
   </head>
   <body onload="onBodyLoad()">
-  <div id="one" data-role="page" data-theme="a">
+  <div id="one" data-role="page" data-theme="c">
       <div data-role="header" data-position="fixed">
 		  <!--<h1>Deals</h1>-->
-		  <img src="images/logo.png" class="headerImg">
-		  <div class="headerBar"></div>
-	  </div>
+		  <img src="images/logo.png" style="height:45px; display:block;  margin-left:auto; margin-right:auto;">
+      </div>
       <div id="onecontent" data-role="content" data-theme="a">
           <ul id="list" data-role="listview" data-inset="true" data-filter="true" data-theme="a">
               <!--<li><a href="#">Ferrari</a></li>-->
@@ -105,18 +104,18 @@
       </div>
       <div data-role="footer" data-position="fixed" data-theme="a">
           <div class="sortbutton" data-role="controlgroup" data-type="horizontal">
-              <a href="#" class="sorter" data-role="button">Type</a>
-              <a href="#" class="sorter" data-role="button">Dist</a>
-              <a href="#" class="sorter" data-role="button">A-Z</a>
+              <a href="#" data-role="button">Type</a>
+              <a href="#" data-role="button">Dist</a>
+              <a href="#" data-role="button">A-Z</a>
           </div>
       </div>
   </div>
       
       <div id="two" data-role="page">
-          <div class="ui-bar ui-bar-a">
+          <div class="ui-bar ui-bar-b">
               <h1>Page 2</h1>
           </div>
-          <div data-role="content" data-theme="a">
+          <div data-role="content" data-theme="e">
               <div class="rounded">
                   <form action="#two" id="mainform">
                       <div data-role="fieldcontain" class="ui-field-contain ui-body ui-br">
@@ -124,7 +123,7 @@
                           <input type="text" name="name" id="name" value-class="ui-body-c ui-input-text ui-corner-all ui-shadow-inset">
                       </div>
                   </form>
-                  <a href="#" id="submit" data-role="button" data-transition="pop" data-theme="a">Submit</a>
+                  <a href="#" id="submit" data-role="button" data-transition="pop" data-theme="b">Submit</a>
               </div>
           </div>
       </div>
