@@ -1,0 +1,20 @@
+.rounded {
+border-radius:10px;
+margin: auto;
+padding: 50px;
+background: -webkit-linear-gradient(top, #00ad00 0%,#6fb76f 100%); /* Chrome10+,Safari5.1+ */
+-webkit-box-shadow: 0 0 5px 5px #888; 
+}
+
+.dealdesc {
+margin-top:10px;
+white-space:normal;
+}
+
+.dealimg {
+margin:5px;
+}
+
+,sortbutton{
+margin:auto;
+}
