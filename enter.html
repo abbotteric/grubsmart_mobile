@@ -1,0 +1,108 @@
+<html>
+<head>
+<title>Enter restaraunt info</title>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script> 
+
+<script type="text/javascript">
+$("document").ready(function() {
+		
+		});
+
+function submit() {
+	$.post("record.php",{phone:$("#rPhone").val(),deal:$("#rDeal").val()});
+	alert('Success');
+	$("#rName").focus();
+	$("#rName").val('');
+	$("#rStreet").val('');
+	$("#rCity").val('');
+	$("#rDeal").val('');
+	$("#rOpen").val('');
+	$("#rClose").val('');
+	$("#rPhone").val('');
+	$("#showName").fadeOut(100);
+}
+
+function checkName() {
+	$.post("yelp.php",{phone:$("#rPhone").val()},function(data){
+			$("#showName").fadeIn(200);
+			});
+}
+
+function inputtest() {
+	$(".checks").each(function(i) {
+			var days = '';
+			var deal = '';
+			var times = '';
+			$(this).children().each(function(j) {
+				if($(this).is(":checked")) {
+				days = days + $(this).val()+' ';
+				}
+				});
+			times = times+$(this).find("input[name='start']").val()+'-';
+			times = times+$(this).find("input[name='end']").val();
+			deal = $(this).find("input[name='deal']").val();
+			alert(days+' '+times+' '+deal);
+			});
+}
+
+function more() {
+	var div = $('<div class="checks"></div>');
+	div.append('<input type="checkbox" name="day" value="Mon">Monday</input>');
+	div.append('<input type="checkbox" name="day" value="Tue">Tuesday</input>');
+	div.append('<input type="checkbox" name="day" value="Wed">Wednesday</input>');
+	div.append('<input type="checkbox" name="day" value="Thu">Thursday</input>');
+	div.append('<input type="checkbox" name="day" value="Fri">Friday</input>');
+	div.append('<input type="checkbox" name="day" value="Sat">Saturday</input>');
+	div.append('<input type="checkbox" name="day" value="Sun">Sunday</input>');
+	div.append('<input type="text" name="start" placeholder="start"/>');
+	div.append('<input type="text" name="end" placeholder="end"/>');
+	div.append('<input type="text" name="deal" placeholder="deal"/>');
+
+	div.attr('style','display:none;');
+	div.insertBefore($("#submitdeals"));
+	div.fadeIn(500);
+}
+
+</script>
+<style type="text/css">
+	p{
+		margin-bottom:2px;
+	}
+	input{
+		margin-left:20px;
+	}
+</style>
+</head>
+<body>
+<!--	<p>Restaraunt Name</p>
+	<input type="text" id="rName"/>
+	<p>Hours</p>
+	Open:<input type="text" id="rOpen"/></br> Close:<input type="text" id="rClose"/> 
+	<p>Street</p>
+	<input type="text" id="rStreet"/>
+	<p>City</p>
+	<input type="text" id="rCity"/>
+	-->
+	Phone Number:&nbsp&nbsp<input type="text" id="rPhone" placeholder="12345678900"/>
+	<button onclick="checkName()">Check Name</button></br>
+	<p id="showName" style="display:none;">Nothing</p>
+	<p>Deal description</p>
+	<textarea id="rDeal" rows="5" cols="30"></textarea></br></br>
+	<button onclick="submit()">Enter Deal</button>
+	<div class="checks">
+		<input type="checkbox" name="day" value="Mon">Monday</input>
+		<input type="checkbox" name="day" value="Tue">Tuesday</input>
+		<input type="checkbox" name="day" value="Wed">Wednesday</input>
+		<input type="checkbox" name="day" value="Thu">Thursday</input>
+		<input type="checkbox" name="day" value="Fri">Friday</input>
+		<input type="checkbox" name="day" value="Sat">Saturday</input>
+		<input type="checkbox" name="day" value="Sun">Sunday</input>
+		<input type="text" name="start" placeholder="start"/>
+		<input type="text" name="end" placeholder="end"/>
+		<input type="text" name="deal" placeholder="deal"/>
+	</div>
+	<button id="submitdeals" onclick="inputtest()">Test</button>
+	<button onclick="more()">New Deal</button>
+</body>
+</html>
+
